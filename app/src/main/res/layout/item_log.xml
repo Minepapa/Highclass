@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:gravity="center_vertical">
+
+    <!-- 상태 이모지 -->
+    <TextView
+        android:id="@+id/tvLogStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="✅"
+        android:textSize="18sp"
+        android:minWidth="30dp"
+        android:gravity="center" />
+
+    <!-- 시간 -->
+    <TextView
+        android:id="@+id/tvLogTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="05/21 07:30"
+        android:textSize="12sp"
+        android:textColor="@color/text_secondary"
+        android:layout_marginStart="8dp"
+        android:minWidth="90dp" />
+
+    <!-- 메시지 -->
+    <TextView
+        android:id="@+id/tvLogMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="MMS 전송 완료"
+        android:textSize="13sp"
+        android:layout_marginStart="8dp"
+        android:maxLines="2"
+        android:ellipsize="end" />
+
+</LinearLayout>
