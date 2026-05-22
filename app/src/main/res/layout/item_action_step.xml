@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="14dp">
+
+        <!-- ── 헤더: 번호 + 아이콘 + 이름 + 이동버튼 + 삭제 ── -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- 단계 번호 -->
+            <TextView
+                android:id="@+id/tvStepNumber"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@color/primary"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <!-- 아이콘 -->
+            <TextView
+                android:id="@+id/tvStepIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="📸"
+                android:textSize="22sp" />
+
+            <!-- 이름 -->
+            <TextView
+                android:id="@+id/tvStepLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="화면 캡처"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <!-- ↑ 이동 -->
+            <ImageButton
+                android:id="@+id/btnMoveUp"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="위로"
+                android:src="@drawable/ic_arrow_up" />
+
+            <!-- ↓ 이동 -->
+            <ImageButton
+                android:id="@+id/btnMoveDown"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="아래로"
+                android:src="@drawable/ic_arrow_down" />
+
+            <!-- 삭제 -->
+            <ImageButton
+                android:id="@+id/btnDeleteStep"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="삭제"
+                android:src="@drawable/ic_delete"
+                android:tint="@color/red" />
+
+        </LinearLayout>
+
+        <!-- 설명 -->
+        <TextView
+            android:id="@+id/tvStepDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="38dp"
+            android:text="설명"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary" />
+
+        <!-- ── 수신 번호 (SEND_MMS / SEND_SMS) ──────────── -->
+        <LinearLayout
+            android:id="@+id/layoutRecipient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="수신 전화번호"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginBottom="4dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etRecipient"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="010-0000-0000"
+                    android:inputType="phone" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <!-- ── 딜레이 설정 (CAPTURE_SCREEN) ─────────────── -->
+        <LinearLayout
+            android:id="@+id/layoutCaptureDelay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="캡처 대기 시간"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_secondary" />
+
+                <TextView
+                    android:id="@+id/tvDelayLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3초 후 캡처"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary" />
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/seekBarDelay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:max="9"
+                android:progress="2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1~10초. 게시글 로드 시간에 맞게 조정하세요."
+                android:textSize="11sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

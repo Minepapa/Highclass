@@ -11,154 +11,124 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- ── 1. 규칙 이름 ──────────────────────────────────── -->
+        <!-- ══ 1. 기본 정보 ════════════════════════════════ -->
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="규칙 이름" android:textSize="13sp" android:textColor="@color/text_secondary"
-            android:layout_marginBottom="4dp" />
+            android:text="기본 정보" android:textSize="13sp" android:textStyle="bold"
+            android:textColor="@color/text_secondary" android:letterSpacing="0.06"
+            android:layout_marginBottom="8dp"/>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etRuleName"
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:hint="예: 딸 알림장봇" android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- ── 2. 감지할 앱 ─────────────────────────────────── -->
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="감지할 앱 (비워두면 모든 앱)" android:textSize="13sp"
-            android:textColor="@color/text_secondary" android:layout_marginBottom="4dp" />
-
-        <!-- 앱 선택 버튼 + 선택된 앱 표시 -->
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:orientation="horizontal" android:gravity="center_vertical"
-            android:layout_marginBottom="4dp">
-
-            <Button
-                android:id="@+id/btnPickApp"
-                android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="📱 앱 목록에서 선택"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
-
-            <TextView
-                android:id="@+id/tvSelectedApp"
-                android:layout_width="0dp" android:layout_height="wrap_content"
-                android:layout_weight="1" android:layout_marginStart="12dp"
-                android:textSize="14sp" android:textStyle="bold"
-                android:textColor="@color/primary"
-                android:visibility="gone" />
-        </LinearLayout>
-
-        <!-- 패키지명 직접 입력 -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:hint="또는 패키지명 직접 입력"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPackageName"
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:hint="com.iscreammedia.app.hiclass.android"
-                android:inputType="text" android:textSize="13sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- ── 3. 키워드 ─────────────────────────────────────── -->
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="알림 키워드 (비워두면 모든 알림)" android:textSize="13sp"
-            android:textColor="@color/text_secondary" android:layout_marginBottom="4dp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etKeyword"
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:hint="예: 알림장" android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- ── 4. 액션 선택 ─────────────────────────────────── -->
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="실행할 액션" android:textSize="13sp"
-            android:textColor="@color/text_secondary" android:layout_marginBottom="4dp" />
-
-        <RadioGroup
-            android:id="@+id/rgAction"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp" />
-
-        <!-- ── 5. MMS 설정 카드 ─────────────────────────────── -->
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardMmsConfig"
             android:layout_width="match_parent" android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            app:cardCornerRadius="12dp" app:cardElevation="2dp"
-            app:cardBackgroundColor="#F0F6FF">
+            app:cardCornerRadius="12dp" app:cardElevation="2dp">
 
-            <LinearLayout
-                android:layout_width="match_parent" android:layout_height="wrap_content"
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:orientation="vertical" android:padding="16dp">
 
+                <!-- 규칙 이름 -->
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="📸 캡처 → MMS 설정" android:textSize="14sp"
-                    android:textStyle="bold" android:layout_marginBottom="12dp"
-                    android:textColor="@color/primary" />
-
-                <!-- 수신 번호 -->
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="MMS 수신 번호" android:textSize="13sp"
-                    android:textColor="@color/text_secondary" android:layout_marginBottom="4dp" />
-
+                    android:text="규칙 이름" android:textSize="12sp" android:textColor="@color/text_secondary"
+                    android:layout_marginBottom="4dp"/>
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginBottom="14dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etRecipient"
-                        android:layout_width="match_parent" android:layout_height="wrap_content"
-                        android:hint="010-0000-0000" android:inputType="phone" />
+                        android:id="@+id/etRuleName" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:hint="예: 딸 알림장봇"
+                        android:inputType="text"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- 딜레이 -->
+                <!-- 감지 앱 -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="감지할 앱 (비워두면 모든 앱)" android:textSize="12sp"
+                    android:textColor="@color/text_secondary" android:layout_marginBottom="6dp"/>
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:orientation="horizontal" android:gravity="center_vertical">
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="1" android:text="게시글 로드 대기 시간"
-                        android:textSize="13sp" android:textColor="@color/text_secondary" />
-                    <TextView android:id="@+id/tvDelayLabel"
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="3초 후 캡처" android:textSize="13sp"
-                        android:textColor="@color/primary" android:textStyle="bold" />
+                    android:orientation="horizontal" android:gravity="center_vertical"
+                    android:layout_marginBottom="6dp">
+                    <Button android:id="@+id/btnPickApp" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:text="📱 앱 목록"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+                    <TextView android:id="@+id/tvSelectedApp" android:layout_width="0dp"
+                        android:layout_height="wrap_content" android:layout_weight="1"
+                        android:layout_marginStart="10dp" android:textSize="13sp"
+                        android:textStyle="bold" android:textColor="@color/primary"
+                        android:visibility="gone"/>
                 </LinearLayout>
-
-                <SeekBar android:id="@+id/seekBarDelay"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp" android:max="9" android:progress="2" />
+                    android:layout_marginBottom="14dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPackageName" android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="com.iscreammedia.app.hiclass.android"
+                        android:inputType="text" android:textSize="12sp"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:text="1초 ~ 10초. 느린 기기는 길게 설정하세요."
-                    android:textSize="11sp" android:textColor="@color/text_secondary"
-                    android:layout_marginTop="4dp" />
+                <!-- 키워드 -->
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="알림 키워드 (비워두면 모든 알림)" android:textSize="12sp"
+                    android:textColor="@color/text_secondary" android:layout_marginBottom="4dp"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etKeyword" android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:hint="예: 알림장"
+                        android:inputType="text"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- ── 버튼 ────────────────────────────────────────────── -->
-        <Button
-            android:id="@+id/btnSave"
-            android:layout_width="match_parent" android:layout_height="52dp"
-            android:layout_marginBottom="8dp"
-            android:text="규칙 저장"
-            style="@style/Widget.MaterialComponents.Button" />
+        <!-- ══ 2. 파이프라인 ══════════════════════════════ -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="실행 파이프라인"
+                android:textSize="13sp" android:textStyle="bold"
+                android:textColor="@color/text_secondary" android:letterSpacing="0.06"/>
+            <Button android:id="@+id/btnAddStep" android:layout_width="wrap_content"
+                android:layout_height="36dp" android:text="+ 단계 추가"
+                android:textSize="12sp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/btnTest"
-            android:layout_width="match_parent" android:layout_height="52dp"
-            android:layout_marginBottom="24dp"
-            android:text="🧪 테스트 전송 (현재 화면 캡처)"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+        <!-- 파이프라인 요약 흐름 표시 -->
+        <TextView android:id="@+id/tvPipelineSummary"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" android:paddingHorizontal="4dp"
+            android:text="단계를 추가하세요" android:textSize="13sp"
+            android:textColor="@color/primary" android:textStyle="italic"/>
+
+        <!-- 빈 상태 안내 -->
+        <TextView android:id="@+id/tvEmptySteps"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:paddingVertical="20dp" android:gravity="center"
+            android:text="+ 단계 추가 버튼을 눌러 파이프라인을 구성하세요.\n\n예) 📸 화면 캡처 → 📱 MMS 전송\n예) 📋 텍스트 → 💬 문자(SMS) 전송"
+            android:textSize="13sp" android:textColor="@color/text_secondary"
+            android:lineSpacingExtra="4dp" android:visibility="visible"/>
+
+        <!-- 단계 목록 -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSteps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- ══ 버튼 ══════════════════════════════════════ -->
+        <Button android:id="@+id/btnSave" android:layout_width="match_parent"
+            android:layout_height="52dp" android:layout_marginBottom="8dp"
+            android:text="규칙 저장"
+            style="@style/Widget.MaterialComponents.Button"/>
+
+        <Button android:id="@+id/btnTest" android:layout_width="match_parent"
+            android:layout_height="52dp" android:layout_marginBottom="24dp"
+            android:text="🧪 테스트 실행"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
     </LinearLayout>
 </ScrollView>
