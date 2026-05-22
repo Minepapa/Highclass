@@ -9,28 +9,22 @@ import com.alimjangbot.databinding.ItemLogBinding
 class LogAdapter(private var logs: List<LogEntry>) :
     RecyclerView.Adapter<LogAdapter.LogViewHolder>() {
 
-    inner class LogViewHolder(private val binding: ItemLogBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
+    inner class LogViewHolder(private val b: ItemLogBinding) :
+        RecyclerView.ViewHolder(b.root) {
         fun bind(entry: LogEntry) {
-            binding.tvLogTime.text    = entry.formattedTime()
-            binding.tvLogStatus.text  = entry.statusEmoji()
-            binding.tvLogMessage.text = entry.message
+            b.tvLogTime.text    = entry.formattedTime()
+            b.tvLogStatus.text  = entry.statusEmoji()
+            b.tvLogMessage.text = entry.message
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LogViewHolder {
-        val binding = ItemLogBinding.inflate(
-            LayoutInflater.from(parent.context), parent, false
-        )
-        return LogViewHolder(binding)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        LogViewHolder(ItemLogBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
-    override fun onBindViewHolder(holder: LogViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: LogViewHolder, position: Int) =
         holder.bind(logs[position])
-    }
 
-    override fun getItemCount(): Int = logs.size
+    override fun getItemCount() = logs.size
 
     fun updateLogs(newLogs: List<LogEntry>) {
         logs = newLogs

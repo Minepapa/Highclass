@@ -4,7 +4,6 @@
     <!-- SMS / MMS 권한 -->
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <!-- 화면 캡처 관련 -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
@@ -16,14 +15,8 @@
     <!-- 배터리 최적화 예외 -->
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
 
-    <!-- 네트워크 상태 확인 -->
+    <!-- 네트워크 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <!-- 미디어 저장 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="28" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="32" />
 
     <application
         android:name=".AlimjangApplication"
@@ -34,18 +27,41 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AlimjangBot">
 
-        <!-- 메인 화면 -->
+        <!-- 메인 화면: 규칙 목록 -->
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true"
-            android:label="@string/app_name">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- 알림 감지 서비스 (시스템 권한 필요) -->
+        <!-- 규칙 추가/편집 -->
+        <activity
+            android:name=".ui.rule.RuleEditActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.MainActivity" />
+
+        <!-- 앱 선택 -->
+        <activity
+            android:name=".ui.rule.AppPickerActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.rule.RuleEditActivity" />
+
+        <!-- 권한 설정 -->
+        <activity
+            android:name=".ui.PermissionActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.MainActivity" />
+
+        <!-- 전송 이력 -->
+        <activity
+            android:name=".ui.log.LogActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.MainActivity" />
+
+        <!-- 알림 감지 서비스 -->
         <service
             android:name=".service.NotificationWatcher"
             android:exported="true"
@@ -54,10 +70,6 @@
             <intent-filter>
                 <action android:name="android.service.notification.NotificationListenerService" />
             </intent-filter>
-            <!-- 메타데이터: 잠금화면에서도 수신 -->
-            <meta-data
-                android:name="android.service.notification.default_filter_types"
-                android:value="conversations|alerting" />
         </service>
 
         <!-- 화면 캡처 포그라운드 서비스 -->
@@ -76,7 +88,7 @@
             </intent-filter>
         </receiver>
 
-        <!-- FileProvider: 캡처 이미지를 MMS에 첨부하기 위한 content:// URI 제공 -->
+        <!-- FileProvider: MMS 첨부 이미지용 -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
