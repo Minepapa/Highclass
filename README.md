@@ -62,10 +62,8 @@ APK 위치: `app/build/outputs/apk/debug/app-debug.apk`
 ### 하이클래스 패키지명 확인 방법
 하이클래스 앱의 실제 패키지명이 다를 수 있습니다. 확인 방법:
 
-1. Play Store에서 하이클래스 검색
-2. URL에서 `id=` 이후 값 확인
-   - 예: `https://play.google.com/store/apps/details?id=com.hischool.highclass`
-   - 패키지명: `com.hischool.highclass`
+- 패키지명: `com.iscreammedia.app.hiclass.android`
+- Play Store: `https://play.google.com/store/apps/details?id=com.iscreammedia.app.hiclass.android`
 
 또는 앱 내 **고급 설정**에서 직접 변경 가능.
 

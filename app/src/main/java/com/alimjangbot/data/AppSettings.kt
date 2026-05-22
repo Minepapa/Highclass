@@ -22,9 +22,9 @@ class AppSettings private constructor(context: Context) {
                 INSTANCE ?: AppSettings(context.applicationContext).also { INSTANCE = it }
             }
 
-        // 하이클래스 앱의 패키지명 (기기에서 확인 후 변경 가능)
-        // Play Store URL: https://play.google.com/store/apps/details?id=com.hischool.highclass
-        const val DEFAULT_HIGHCLASS_PACKAGE = "com.hischool.highclass"
+        // 하이클래스 앱의 패키지명
+        // Play Store URL: https://play.google.com/store/apps/details?id=com.iscreammedia.app.hiclass.android
+        const val DEFAULT_HIGHCLASS_PACKAGE = "com.iscreammedia.app.hiclass.android"
 
         // 알림 본문에서 감지할 키워드
         const val DEFAULT_KEYWORD = "알림장"
