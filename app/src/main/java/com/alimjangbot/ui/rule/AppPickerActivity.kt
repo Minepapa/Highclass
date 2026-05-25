@@ -1,11 +1,14 @@
 package com.alimjangbot.ui.rule
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
 import android.view.MenuItem
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alimjangbot.databinding.ActivityAppPickerBinding
@@ -44,6 +47,7 @@ class AppPickerActivity : AppCompatActivity() {
 
         setupRecyclerView()
         setupSearch()
+        setupManualInput()
         loadInstalledApps()
     }
 
@@ -70,6 +74,35 @@ class AppPickerActivity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, st: Int, c: Int, a: Int) {}
             override fun onTextChanged(s: CharSequence?, st: Int, b: Int, c: Int) {}
         })
+    }
+
+    private fun setupManualInput() {
+        binding.btnManualInput.setOnClickListener {
+            val input = EditText(this).apply {
+                hint = "예: com.iscreammedia.app.hiclass.android"
+                inputType = InputType.TYPE_CLASS_TEXT
+            }
+            AlertDialog.Builder(this)
+                .setTitle("패키지명 직접 입력")
+                .setMessage("앱의 패키지명을 입력하세요")
+                .setView(input)
+                .setPositiveButton("확인") { _, _ ->
+                    val pkg = input.text.toString().trim()
+                    if (pkg.isNotEmpty()) {
+                        val pm = packageManager
+                        val label = runCatching {
+                            pm.getApplicationLabel(pm.getApplicationInfo(pkg, 0)).toString()
+                        }.getOrDefault(pkg)
+                        setResult(RESULT_OK, Intent().apply {
+                            putExtra(RESULT_PACKAGE, pkg)
+                            putExtra(RESULT_LABEL, label)
+                        })
+                        finish()
+                    }
+                }
+                .setNegativeButton("취소", null)
+                .show()
+        }
     }
 
     private fun loadInstalledApps() {
