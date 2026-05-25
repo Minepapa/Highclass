@@ -79,7 +79,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="\"알림장\""
+                android:text="&quot;알림장&quot;"
                 android:textSize="13sp" />
         </LinearLayout>
 
