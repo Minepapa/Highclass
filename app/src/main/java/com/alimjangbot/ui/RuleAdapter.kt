@@ -28,7 +28,10 @@ class RuleAdapter(
             b.tvRuleName.text    = rule.name
             b.tvRuleApp.text     = if (rule.appLabel.isNotBlank()) rule.appLabel else rule.packageName.ifBlank { "모든 앱" }
             b.tvRuleKeyword.text = if (rule.keyword.isNotBlank()) "\"${rule.keyword}\"" else "모든 알림"
-            b.tvRuleAction.text  = rule.actionType.label
+            b.tvRuleAction.text  = if (rule.steps.isNotEmpty())
+                rule.steps.joinToString(" → ") { "${it.type.icon} ${it.type.label}" }
+            else
+                "액션 없음"
             b.switchRule.isChecked = rule.enabled
             b.root.alpha = if (rule.enabled) 1f else 0.5f
 
