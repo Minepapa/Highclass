@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 학교 알림장봇 아이콘: 펼쳐진 책 + 알림 벨 배지 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- ── 왼쪽 페이지 ── -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M20,76 L20,34 C20,31.2 22.2,29 25,29 L52,29 L52,76 Q36,79 20,76 Z"/>
+
+    <!-- ── 오른쪽 페이지 ── -->
+    <path
+        android:fillColor="#F0F4F8"
+        android:pathData="M56,29 L83,29 C85.8,29 88,31.2 88,34 L88,76 Q72,79 56,76 L56,29 Z"/>
+
+    <!-- ── 책등 (스파인) ── -->
+    <path
+        android:fillColor="#CFD8DC"
+        android:pathData="M52,29 Q54,27 56,29 L56,76 Q54,78 52,76 Z"/>
+
+    <!-- ── 책 하단 그림자 (입체감) ── -->
+    <path
+        android:fillColor="#BDBDBD"
+        android:pathData="M20,76 Q54,81 88,76 L88,79 Q54,84 20,79 Z"/>
+
+    <!-- ── 왼쪽 페이지 줄 (파란색 = 숙제/알림장 느낌) ── -->
+    <path android:fillColor="#4A90D9" android:pathData="M26,40 L50,40 L50,42.5 L26,42.5 Z"/>
+    <path android:fillColor="#4A90D9" android:pathData="M26,49 L50,49 L50,51.5 L26,51.5 Z"/>
+    <path android:fillColor="#4A90D9" android:pathData="M26,58 L50,58 L50,60.5 L26,60.5 Z"/>
+    <path android:fillColor="#4A90D9" android:pathData="M26,67 L40,67 L40,69.5 L26,69.5 Z"/>
+
+    <!-- ── 오른쪽 페이지 줄 (회색) ── -->
+    <path android:fillColor="#B0BEC5" android:pathData="M58,40 L82,40 L82,42.5 L58,42.5 Z"/>
+    <path android:fillColor="#B0BEC5" android:pathData="M58,49 L82,49 L82,51.5 L58,51.5 Z"/>
+    <path android:fillColor="#B0BEC5" android:pathData="M58,58 L82,58 L82,60.5 L58,60.5 Z"/>
+    <path android:fillColor="#B0BEC5" android:pathData="M58,67 L74,67 L74,69.5 L58,69.5 Z"/>
+
+    <!-- ── 알림 벨 배지 (우측 상단) ── -->
+    <!-- 파란 원형 배경 -->
+    <path
+        android:fillColor="#1565C0"
+        android:pathData="M80,13 C73.4,13 68,18.4 68,25 C68,31.6 73.4,37 80,37 C86.6,37 92,31.6 92,25 C92,18.4 86.6,13 80,13 Z"/>
+    <!-- 벨 몸통 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M80,18 C77.2,18 75,20.2 75,23 L75,27 L73,29 L87,29 L85,27 L85,23 C85,20.2 82.8,18 80,18 Z"/>
+    <!-- 벨 추 (클래퍼) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M78.5,29.5 L81.5,29.5 C81.5,30.9 80.8,32 80,32 C79.2,32 78.5,30.9 78.5,29.5 Z"/>
+    <!-- 벨 하이라이트 -->
+    <path
+        android:fillColor="#40FFFFFF"
+        android:pathData="M75.5,22 C76,20 77.5,18.8 79.5,18.5 C77.5,19.2 76,20.5 75.5,22 Z"/>
+
+</vector>
