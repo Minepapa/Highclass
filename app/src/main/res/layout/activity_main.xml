@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/background">
 
-    <!-- 툴바 -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -16,131 +15,155 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/primary"
-            app:title="📚 알림 자동화"
+            app:title="📚 알림장봇"
             app:titleTextColor="@color/white" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- 본문 -->
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <!-- ── 상태 카드 ─────────────────────────────────────── -->
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="3dp"
-            app:cardBackgroundColor="@color/primary">
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <LinearLayout
+            <!-- 상태 카드 -->
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="3dp"
+                app:cardBackgroundColor="@color/primary">
 
-                <!-- 서비스 on/off + 상태 텍스트 -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                    <TextView
-                        android:id="@+id/tvGlobalStatus"
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="🟢 자동화 실행 중"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/white" />
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
 
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:id="@+id/switchService"
+                        <TextView
+                            android:id="@+id/tvStatus"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="🟢 실행 중"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white" />
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switchEnabled"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btnNotifPerm"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="⚠️ 알림 접근 권한 설정하기"
+                        android:textColor="@color/white"
+                        android:visibility="gone"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
-                <!-- 권한 Chip 그룹 -->
-                <com.google.android.material.chip.ChipGroup
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- 수신 번호 입력 카드 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chipNotifPerm"
-                        android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="⚠️ 알림 접근"
-                        style="@style/Widget.MaterialComponents.Chip.Filter"
-                        app:chipBackgroundColor="#33FFFFFF"
-                        app:chipStrokeColor="#55FFFFFF"
-                        android:textColor="@color/white" />
+                        android:text="문자 받을 번호 (딸 번호)"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary"
+                        android:layout_marginBottom="8dp" />
 
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chipCapturePerm"
-                        android:layout_width="wrap_content"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="⚠️ 화면 캡처"
-                        style="@style/Widget.MaterialComponents.Chip.Filter"
-                        app:chipBackgroundColor="#33FFFFFF"
-                        app:chipStrokeColor="#55FFFFFF"
-                        android:textColor="@color/white" />
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-                </com.google.android.material.chip.ChipGroup>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etPhoneNumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="예: 01012345678"
+                            android:inputType="phone" />
 
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- ── 규칙 목록 헤더 ─────────────────────────────────── -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="16dp"
-            android:paddingBottom="4dp"
-            android:text="자동화 규칙"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            android:textColor="@color/text_secondary"
-            android:letterSpacing="0.08" />
+                    <Button
+                        android:id="@+id/btnSave"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="저장"
+                        app:backgroundTint="@color/primary" />
 
-        <!-- ── 빈 상태 안내 ───────────────────────────────────── -->
-        <TextView
-            android:id="@+id/tvEmptyRules"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="40dp"
-            android:gravity="center"
-            android:text="아직 규칙이 없습니다.\n아래 + 버튼을 눌러 첫 규칙을 추가하세요."
-            android:textSize="14sp"
-            android:textColor="@color/text_secondary"
-            android:visibility="visible" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-        <!-- ── 규칙 RecyclerView ──────────────────────────────── -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvRules"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:clipToPadding="false"
-            android:paddingBottom="80dp" />
+            <!-- 안내 카드 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
 
-    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-    <!-- ── FAB: 규칙 추가 ────────────────────────────────────── -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAddRule"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="20dp"
-        android:contentDescription="규칙 추가"
-        app:srcCompat="@android:drawable/ic_input_add"
-        app:backgroundTint="@color/primary" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="동작 방식"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="하이클래스 앱에서 &#39;알림장&#39; 키워드가 포함된 알림이 오면, 알림 제목과 내용을 위에 저장한 번호로 문자(SMS) 전송합니다.\n\n배터리 절약 설정에서 이 앱을 &#39;제한 없음&#39;으로 설정하면 백그라운드에서 더 안정적으로 동작합니다."
+                        android:textSize="13sp"
+                        android:lineSpacingMultiplier="1.5"
+                        android:textColor="@color/text_secondary" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

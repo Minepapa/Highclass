@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- SMS / MMS 권한 -->
     <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.READ_SMS" />
-
-    <!-- 화면 캡처 관련 -->
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
-
-    <!-- 부팅 시 자동 시작 -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
-    <!-- 배터리 최적화 예외 -->
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
-
-    <!-- 네트워크 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".AlimjangApplication"
@@ -27,7 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AlimjangBot">
 
-        <!-- 메인 화면: 규칙 목록 -->
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
@@ -37,31 +23,6 @@
             </intent-filter>
         </activity>
 
-        <!-- 규칙 추가/편집 -->
-        <activity
-            android:name=".ui.rule.RuleEditActivity"
-            android:exported="false"
-            android:parentActivityName=".ui.MainActivity" />
-
-        <!-- 앱 선택 -->
-        <activity
-            android:name=".ui.rule.AppPickerActivity"
-            android:exported="false"
-            android:parentActivityName=".ui.rule.RuleEditActivity" />
-
-        <!-- 권한 설정 -->
-        <activity
-            android:name=".ui.PermissionActivity"
-            android:exported="false"
-            android:parentActivityName=".ui.MainActivity" />
-
-        <!-- 전송 이력 -->
-        <activity
-            android:name=".ui.log.LogActivity"
-            android:exported="false"
-            android:parentActivityName=".ui.MainActivity" />
-
-        <!-- 알림 감지 서비스 -->
         <service
             android:name=".service.NotificationWatcher"
             android:exported="true"
@@ -72,13 +33,6 @@
             </intent-filter>
         </service>
 
-        <!-- 화면 캡처 포그라운드 서비스 -->
-        <service
-            android:name=".service.ScreenCaptureService"
-            android:exported="false"
-            android:foregroundServiceType="mediaProjection" />
-
-        <!-- 부팅 완료 수신기 -->
         <receiver
             android:name=".receiver.BootReceiver"
             android:exported="true">
@@ -87,17 +41,6 @@
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
         </receiver>
-
-        <!-- FileProvider: MMS 첨부 이미지용 -->
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_provider_paths" />
-        </provider>
 
     </application>
 
